@@ -3,6 +3,7 @@ import { ref, computed } from "vue";
 import { useApi } from "@/composables/useApi";
 import { useAsset } from "@/composables/useAsset";
 import { useAuthStore } from "@/stores/auth";
+import CommentForm from "@/components/CommentForm.vue";
 
 const authStore = useAuthStore();
 
@@ -20,6 +21,7 @@ const isLiked = ref(
 
 const likeCount = ref(props.post.likes?.length || 0);
 const comments = ref(props.post.comments || []);
+const showComments = ref(false);
 
 const toggleLike = async () => {
   try {
@@ -37,6 +39,9 @@ const toggleLike = async () => {
   }
 };
 
+const addComment = (comment) => {
+  comments.value.push(comment);
+};
 </script>
 
 <template>
@@ -49,7 +54,7 @@ const toggleLike = async () => {
         <span v-else>🤍</span>
         {{ likeCount }}
       </button>
-      <button class="button">
+      <button @click="showComments = !showComments" class="button">
         💬 {{ comments.length }}
       </button>
     </div>
@@ -57,5 +62,13 @@ const toggleLike = async () => {
     <p class="post-caption">
       <strong>{{ post.user.name }}</strong> . {{ post.caption }}
     </p>
+
+    <div v-if="showComments" class="comments-section">
+      <CommentForm :post-id="post.id" @comment-added="addComment" />
+      <div v-for="comment in comments" :key="comment.id" class="comment">
+        <strong>{{ comment.user.name }}</strong
+        >: {{ comment.content }}
+      </div>
+    </div>
   </div>
 </template>
