@@ -40,7 +40,7 @@ const handleLogout = async () => {
       </router-link>
 
       <router-link 
-        v-if="userId"
+        v-if="userId && false"
         :to="`/users/${userId}`" 
         class="nav-link"
       >

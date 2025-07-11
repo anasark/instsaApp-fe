@@ -80,19 +80,6 @@ body {
   background-color: #cc0000;
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
 /* Post Card */
 .post-card {
   background-color: var(--color-background-soft);
@@ -119,7 +106,7 @@ body {
   margin-top: 0.5rem;
 }
 
-/* Login / Register */
+/* Login / Register / Post Create */
 .auth-container {
   max-width: 400px;
   margin: 2rem auto;
@@ -193,6 +180,28 @@ body {
   font-size: 0.875rem;
   margin-top: 0.5rem;
   text-align: center;
+}
+
+.textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: none;
+}
+
+.file-input {
+  width: 100%;
+}
+
+.button-post {
+  background-color: #28a745;
+  color: #ffffff;
+}
+
+.button-post:disabled {
+  background-color: #ccc;
 }
 
 /* Comment Form Styles */

@@ -60,7 +60,7 @@ const addComment = (comment) => {
     </div>
 
     <p class="post-caption">
-      <strong>{{ post.user.name }}</strong> . {{ post.caption }}
+      <strong>{{ post.user?.name }}</strong> . {{ post.caption }}
     </p>
 
     <div v-if="showComments" class="comments-section">
