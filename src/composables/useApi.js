@@ -14,6 +14,7 @@ export const useApi = () => {
   })
   
   api.interceptors.request.use(config => {
+    console.log('bla bla bla', authStore.token)
     if (authStore.token) {
       config.headers.Authorization = `Bearer ${authStore.token}`
     }

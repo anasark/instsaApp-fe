@@ -28,8 +28,8 @@ export const useAuthStore = defineStore('auth', {
       const { data } = await useApi().get('/auth/user')
       this.user = data
     },
-    logout() {
-      useApi().post('/auth/logout')
+    async logout() {
+      await useApi().post('/auth/logout')
       this.token = null
       this.user = null
       localStorage.removeItem('token')
