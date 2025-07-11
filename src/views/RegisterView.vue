@@ -30,7 +30,7 @@ const handleRegister = async () => {
     });
 
     await authStore.register(formData);
-    window.location.href = "/";
+
   } catch (err) {
     error.value =
       err.response?.data?.message || "Registration failed. Please try again.";
@@ -99,7 +99,7 @@ const handleRegister = async () => {
         />
       </div>
 
-      <button type="submit" :disabled="isLoading">
+      <button type="submit" :disabled="isLoading" class="button button-register">
         {{ isLoading ? "Registering..." : "Register" }}
       </button>
 

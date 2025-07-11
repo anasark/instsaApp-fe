@@ -35,6 +35,10 @@ const handleLogout = async () => {
     </div>
 
     <div v-else class="nav-links">
+      <router-link to="/posts/create" class="nav-link">
+        <button class="button">Create Post</button>
+      </router-link>
+
       <router-link 
         v-if="userId"
         :to="`/users/${userId}`" 

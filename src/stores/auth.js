@@ -3,7 +3,7 @@ import { useApi } from '@/composables/useApi'
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
-    user: null,
+    user: JSON.parse(localStorage.getItem('user')) || null,
     token: localStorage.getItem('token') || null
   }),
   getters: {
@@ -12,15 +12,17 @@ export const useAuthStore = defineStore('auth', {
   actions: {
     async login(credentials) {
       const { data } = await useApi().post('/auth/login', credentials)
-      this.token = data.token
-      this.user = data.user
-      localStorage.setItem('token', data.token)
+      this.user = data.data.user
+      this.token = data.data.token
+      localStorage.setItem('token', this.token)
+      localStorage.setItem('user', JSON.stringify(this.user));
     },
     async register(userData) {
       const { data } = await useApi().post('/auth/register', userData)
-      this.token = data.token
-      this.user = data.user
-      localStorage.setItem('token', data.token)
+      this.token = data.data.token
+      this.user = data.data.user
+      localStorage.setItem('token', this.token)
+      localStorage.setItem('user', JSON.stringify(this.user));
     },
     async fetchUser() {
       const { data } = await useApi().get('/auth/user')
@@ -31,6 +33,7 @@ export const useAuthStore = defineStore('auth', {
       this.token = null
       this.user = null
       localStorage.removeItem('token')
+      localStorage.removeItem('user')
     }
   }
 })

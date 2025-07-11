@@ -161,13 +161,15 @@ body {
   outline: none;
 }
 
-.button-login {
+.button-login,
+.button-register {
   background-color: #3897f0;
   color: #ffffff;
   width: 100%;
 }
 
-.button-login:hover {
+.button-login:hover,
+.button-register:hover {
   background-color: #007bbf;
 }
 

@@ -19,7 +19,7 @@ const handleLogin = async () => {
 
   try {
     await authStore.login(form.value);
-    window.location.href = "/";
+    router.push('/')
   } catch (err) {
     error.value =
       err.response?.data?.message || "Login failed. Please try again.";
